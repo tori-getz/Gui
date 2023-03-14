@@ -1,21 +1,21 @@
-import { globalStateManager, IGuiNode } from "@gui/core";
+import { Component, globalStateManager, IGuiNode } from "@gui/core";
 import { isArray, isEmpty } from "lodash";
 import { setProps } from "./props";
 import { setEvents } from "./events";
 
 const manager = globalStateManager();
+const { state: globalState } = manager;
 
 export const renderWithSubscribe = (
-  element: IGuiNode,
+  Element: Component,
   container: HTMLElement
 ) => {
-  render(element, container);
-
+  render(Element({}, null) as IGuiNode, container);
   manager.subscribe(() => {
-    console.log(manager.state);
     container.removeChild(container.firstChild as Node);
-    // manager.state.cursor = 0;
-    render(element, container);
+    globalState.states.cursor = 0;
+    globalState.effects.cursor = 0;
+    render(Element({}, null) as IGuiNode, container);
   });
 };
 

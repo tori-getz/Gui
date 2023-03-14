@@ -1,13 +1,7 @@
-export type Subscriber = () => void;
-
-export interface IGlobalState {
-  states: Array<any>;
-  cursor: number;
-  subscribers: Array<Subscriber>;
+export interface IState<T = unknown> {
+  value: T;
 }
 
-export interface IGlobalStateManager {
-  state: IGlobalState;
-  subscribe: (subscriber: Subscriber) => void;
-  notify: () => void;
-}
+export type NextState<T> = T extends any ? (T | (() => T)) : never;
+export type SetState<T> = (nextState: NextState<T>) => void;
+

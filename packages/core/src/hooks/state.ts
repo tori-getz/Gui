@@ -1,22 +1,18 @@
-import { globalStateManager } from '~/state';
+import { globalStateManager } from '~/global-state';
+import { mountSetState, mountState, SetState } from '~/state';
 
 export const state = <T = unknown>(
   initialValue: T
-): [ state: T, setState: (nextState: T) => void ] => {
+): [ state: T, setState: SetState<T> ] => {
   const manager = globalStateManager();
   const { state: globalState } = manager;
 
-  const currentCursor = globalState.cursor;
-  const state = globalState.states[currentCursor] ?? initialValue;
+  const currentCursor = globalState.states.cursor;
 
-  const setState = (nextState: T): void => {
-    globalState.states[currentCursor] = nextState;
-    manager.notify();
-  }
+  const state = mountState(currentCursor, initialValue);
+  const setState = mountSetState(state, currentCursor);
 
-  globalState.cursor += 1;
+  globalState.states.cursor += 1;
 
-  console.log(globalState);
-
-  return [ state, setState ];
+  return [ state.value, setState ];
 }

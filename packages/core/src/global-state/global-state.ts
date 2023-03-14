@@ -1,4 +1,8 @@
-import type { IGlobalState, IGlobalStateManager, Subscriber } from "./types";
+import type {
+  IGlobalState,
+  IGlobalStateManager,
+  Subscriber
+} from "./types";
 
 declare global {
   interface Window {
@@ -29,10 +33,16 @@ export const globalStateManager = (): IGlobalStateManager => {
 const getGlobalState = (): IGlobalState => {
   if (!(window as any).GuiGlobalState) {
     (window as any).GuiGlobalState = {
-      states: [],
-      cursor: 0,
-      subscribers: []
-    };
+      states: {
+        list: [],
+        cursor: 0
+      },
+      effects: {
+        list: [],
+        cursor: 0,
+      },
+      subscribers: [],
+    } as IGlobalState;
   }
 
   return (window as any).GuiGlobalState;

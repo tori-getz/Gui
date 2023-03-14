@@ -1,2 +1,2 @@
-export * from './global-state';
+export * from './state';
 export * from './types';

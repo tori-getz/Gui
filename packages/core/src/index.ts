@@ -1,3 +1,3 @@
 export * from './vdom';
-export * from './state';
+export * from './global-state';
 export * from './hooks';
