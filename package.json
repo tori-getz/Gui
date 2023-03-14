@@ -6,10 +6,14 @@
     "packages/*"
   ],
   "devDependencies": {
-    "lerna": "^6.5.1"
+    "lerna": "^6.5.1",
+    "nx": "^15.8.6"
   },
   "scripts": {
-    "dev": "npx lerna run --parallel dev --stream",
-    "clean": "npx lerna run rm && npx lerna clean --yes && rimraf node_modules"
+    "dev": "npx lerna run dev --parallel --stream --ignore @gui/example",
+    "build": "npx lerna run build --ignore @gui/example",
+    "clean": "npx lerna run rm && npx lerna clean --yes && rimraf node_modules",
+    "graph": "npx nx graph",
+    "example": "yarn workspace @gui/example dev"
   }
 }

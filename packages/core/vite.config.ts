@@ -11,7 +11,9 @@ export default defineConfig({
       name: libraryName,
       fileName: format => `${libraryName}.${format}.js`
     },
+    emptyOutDir: false,
     rollupOptions: {
+      input: './src/index.ts',
       external: ['lodash'],
       output: {
         globals: {

@@ -1,37 +1,22 @@
 import * as Gui from '@gui/core';
 import * as GuiDOM from '@gui/dom';
-import { Component } from '@gui/core';
-import './style.css';
 
-const Hahaha = () => {
+const Counter: Gui.Component = () => {
+  const [ counter, setCounter ] = Gui.state<number>(0);
+  const [ greeting, setGreeting ] = Gui.state<string>('hello');
+
   return (
     <div>
-      <a>
-        <h4>hahahahah</h4>
-      </a>
+      Counter: {counter}
+      <button onClick={() => setCounter(counter + 1)}>increment</button>
+      <button onClick={() => setCounter(counter - 1)}>decrement</button>
     </div>
-  );
-}
-
-const CoolComponent: Component<{ name: string }> = props => {
-  return (
-    <div onClick={() => alert('hello')}>
-      <p className='wrapper'>hi {props.name}</p>
-      <>
-        <div className='hehe'>  
-          <Hahaha />
-        </div>
-        <Hahaha />
-      </>
-      {/* <Hahaha /> */}
-    </div>
-  );
+  )
 }
 
 export const start = () => {
   GuiDOM.render(
-    <CoolComponent name='getz' />,
+    <Counter />,
     document.querySelector('#app') as HTMLElement
   )
-  console.log(<CoolComponent name='hahah' />);
 }

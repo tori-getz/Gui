@@ -1,14 +1,26 @@
-import { globalState, IGuiNode } from '@gui/core';
+import { globalStateManager, IGuiNode } from "@gui/core";
 import { isArray, isEmpty } from "lodash";
 import { setProps } from "./props";
 import { setEvents } from "./events";
 
-export const render = (
+const manager = globalStateManager();
+
+export const renderWithSubscribe = (
   element: IGuiNode,
-  container: HTMLElement,
-  subscribeToGlobalState: boolean = true
+  container: HTMLElement
 ) => {
-  if (typeof element === 'string' || typeof element === 'number') {
+  render(element, container);
+
+  manager.subscribe(() => {
+    console.log(manager.state);
+    container.removeChild(container.firstChild as Node);
+    // manager.state.cursor = 0;
+    render(element, container);
+  });
+};
+
+const render = (element: IGuiNode, container: HTMLElement) => {
+  if (typeof element === "string" || typeof element === "number") {
     const textNode = document.createTextNode(String(element));
     container.appendChild(textNode);
 
@@ -18,7 +30,7 @@ export const render = (
   const domElement = document.createElement(element.tag);
 
   if (isArray(element)) {
-    element.forEach(el => {
+    element.forEach((el) => {
       render(el, domElement);
     });
 
@@ -26,7 +38,7 @@ export const render = (
   }
 
   if (!isEmpty(element.children)) {
-    element.children?.forEach(child => {
+    element.children?.forEach((child) => {
       render(child, domElement);
     });
   }
@@ -35,17 +47,4 @@ export const render = (
   setEvents(domElement, element);
 
   container.appendChild(domElement);
-
-  if (!subscribeToGlobalState) return;
-
-  globalState.subscribe(() => {
-    rerender(element, container);
-  });
-}
-
-export const rerender = (
-  element: IGuiNode,
-  container: HTMLElement,
-) => {
-  console.log(element, container);
-}
+};

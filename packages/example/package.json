@@ -18,5 +18,9 @@
   "dependencies": {
     "@gui/core": "*",
     "@gui/dom": "*"
+  },
+  "peerDependencies": {
+    "@gui/core": "^1.0.0",
+    "@gui/dom": "^1.0.0"
   }
 }

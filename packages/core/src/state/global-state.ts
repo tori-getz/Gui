@@ -1,36 +1,39 @@
-export type Subscriber = () => void;
+import type { IGlobalState, IGlobalStateManager, Subscriber } from "./types";
 
-export class GlobalState {
-  private static instance: GlobalState;
-
-  public states: Array<any>;
-  public cursor: number;
-
-  private subscribers: Array<Subscriber>;
-
-  private constructor() {
-    this.states = [];
-    this.cursor = 0;
-    this.subscribers = [];
-  }
-
-  public static getInstance(): GlobalState {
-    if (!this.instance) {
-      this.instance = new GlobalState();
-    }
-
-    return this.instance;
-  }
- 
-  public subscribe(subscriber: Subscriber) {
-    this.subscribers.push(subscriber);
-  }
-
-  public notifySubscribers() {
-    this.subscribers.forEach(subscriber => {
-      subscriber();
-    });
+declare global {
+  interface Window {
+    GuiGlobalState: IGlobalState
   }
 }
 
-export const globalState = GlobalState.getInstance();
+export const globalStateManager = (): IGlobalStateManager => {
+  const state = getGlobalState();
+
+  const subscribe = (subscriber: Subscriber): void => {
+    state.subscribers.push(subscriber);
+  }
+
+  const notify = (): void => {
+    state.subscribers.forEach(subscriber => {
+      subscriber();
+    });
+  }
+
+  return {
+    state,
+    subscribe,
+    notify,
+  };
+}
+
+const getGlobalState = (): IGlobalState => {
+  if (!(window as any).GuiGlobalState) {
+    (window as any).GuiGlobalState = {
+      states: [],
+      cursor: 0,
+      subscribers: []
+    };
+  }
+
+  return (window as any).GuiGlobalState;
+}

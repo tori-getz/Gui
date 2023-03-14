@@ -3064,7 +3064,7 @@ npmlog@^6.0.0, npmlog@^6.0.2:
     gauge "^4.0.3"
     set-blocking "^2.0.0"
 
-nx@15.8.6, "nx@>=15.5.2 < 16":
+nx@15.8.6, "nx@>=15.5.2 < 16", nx@^15.8.6:
   version "15.8.6"
   resolved "https://registry.yarnpkg.com/nx/-/nx-15.8.6.tgz#ffe9a32b0c4614ec25d7308e3a37455dc386d29f"
   integrity sha512-3OsT6HMyyUyRuP07vLr7iuWzqziQvkh/vSfOWQb3PXakm6N1IvaLxF+NuUCtSaBDUACfqoVO4MC7WE2270OrKQ==
@@ -4256,6 +4256,11 @@ vite-plugin-dts@^2.1.0:
     kolorist "^1.6.0"
     magic-string "^0.29.0"
     ts-morph "17.0.1"
+
+vite-plugin-tsc@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-tsc/-/vite-plugin-tsc-0.1.1.tgz#ea44b21c4e1d91b744754efbe05702b317984b9d"
+  integrity sha512-vDH7hyueSKZyDZ39vJs/uyFiHVmtvCIj0Qi5shTI627KLhw2j0C3J39ML2Fz5JNw2cstohG5LtwSeXIiPK9vaw==
 
 vite@^4.1.0, vite@^4.1.4:
   version "4.1.4"

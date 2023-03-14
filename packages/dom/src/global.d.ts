@@ -1,5 +1,7 @@
 declare namespace JSX {
-  type Element = any;
+  type Element = any & {
+    onClick: Function
+  };
 
   interface IntrinsicElements extends IntrinsicElementMap {}
 
