@@ -1,17 +1,31 @@
-import { IGuiNode } from "@gui/core";
-import { eventList } from "./event-list";
+import { IPatchedNode } from "~/dom";
+import { listener } from "./listener";
+import type { GuiEvent } from "./types";
 
-export const setEvents = (
-  element: HTMLElement,
-  node: IGuiNode
+export const createEvent = <
+  T extends HTMLElement = HTMLInputElement,
+  E extends Event = InputEvent
+>(
+  event: E
+): GuiEvent<T, E> => ({
+  event,
+  target: event.target as EventTarget & T,
+})
+
+export const attachEvent = (
+  node: IPatchedNode,
+  eventName: string,
+  handler: unknown,
 ) => {
-  const filteredProps = Object.keys(node.props ?? {})
-    .filter(prop => eventList.includes(prop));
-  
-  for (const prop of filteredProps) {
-    const formattedProp = prop.replaceAll('on', '').toLowerCase();
-    const handler = node.props[prop];
+  node[eventName] = (event: Event) => {
+    const extendedEvent = createEvent(event);
 
-    element.addEventListener(formattedProp, handler);
+    (handler as Function)(extendedEvent);
+  };
+
+  if (!handler) {
+    node.removeEventListener(eventName, listener)
+  } else {
+    node.addEventListener(eventName, listener);
   }
 }

@@ -24,13 +24,9 @@ export type PatchProps = (
 export type PatchProp = (
   node: IPatchedNode,
   key: string,
-  prevValue: string,
-  nextValue: string
+  prevValue: unknown,
+  nextValue: unknown,
 ) => void;
-
-export type IListener<K extends keyof HTMLElementEventMap> = {
-  [key: string]: (event: HTMLElementEventMap[K]) => unknown;
-};
 
 export type PatchChildren = (
   node: PatchedNode,

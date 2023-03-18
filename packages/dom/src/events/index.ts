@@ -1,2 +1,2 @@
 export * from './events';
-export * from './event-list';
+export * from './types';

@@ -14,7 +14,7 @@
       "import": "./dist/gui-dom.es.js",
       "require": "./dist/gui-dom.umd.js"
     },
-    "./jsx": {
+    "./client": {
       "types": "./jsx.d.ts"
     }
   },

@@ -1,14 +1,13 @@
 import { createElement, IGuiNode } from "@gui/core";
+import { setProperty } from "~/properties";
 import { createDOMNode } from "./dom";
-import { listener } from "./listener";
 
 import type {
   IPatchedNode,
   PatchChildren,
   PatchedNode,
   PatchFn,
-  PatchNode, 
-  PatchProp,
+  PatchNode,
   PatchProps,
   RecycleNode
 } from "./types";
@@ -72,44 +71,9 @@ export const patchProps: PatchProps = (
 
   Object.keys(mergedProps).forEach(key => {
     if (prevProps[key] !== nextProps[key]) {
-      patchProp(node as IPatchedNode, key, prevProps[key], nextProps[key]);
+      setProperty(node as IPatchedNode, key, prevProps[key], nextProps[key]);
     }
   });
-}
-
-export const patchProp: PatchProp = (
-  node,
-  key,
-  prevValue,
-  nextValue
-) => {
-  if (key === 'className') {
-    if (prevValue !== nextValue) {
-      node.classList.add(nextValue);
-    }
-    return;
-  }
-
-  if (key.startsWith('on')) {
-    const eventName = key.slice(2).toLowerCase();
-
-    node[eventName] = nextValue;
-
-    if (!nextValue) {
-      node.removeEventListener(eventName, listener)
-    } else {
-      node.addEventListener(eventName, listener);
-    }
-
-    return;
-  }
-
-  if (nextValue === null || (nextValue as unknown) === false) {
-    node.removeAttribute(key);
-    return;
-  }
-
-  node.setAttribute(key, nextValue);
 }
 
 export const patchChildren: PatchChildren = (
