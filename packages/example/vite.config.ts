@@ -1,5 +1,6 @@
 import path from "node:path";
 import { defineConfig } from "vite";
+import { gui } from '@gui/vite-plugin';
 
 export default defineConfig({
   resolve: {
@@ -12,12 +13,6 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      watch: {
-        include: [
-          path.resolve(__dirname, '..', 'core'),
-          path.resolve(__dirname, '..', 'dom'),
-        ]
-      },
       external: ["@gui/core", "@gui/dom"],
       output: {
         globals: {
@@ -27,9 +22,5 @@ export default defineConfig({
       },
     },
   },
-  esbuild: {
-    jsx: "transform",
-    jsxFactory: "Gui.createElement",
-    jsxFragment: "Gui.Fragment",
-  },
+  plugins: [gui({})]
 });

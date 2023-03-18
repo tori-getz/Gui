@@ -1,10 +1,10 @@
 {
   "name": "@gui/dom",
   "version": "1.0.0",
-  "description": "Toy UI library",
+  "description": "Gui library for working with DOM",
   "files": [
     "dist",
-    "src/index.ts"
+    "jsx.d.ts"
   ],
   "main": "./dist/gui-dom.umd.js",
   "module": "./dist/gui-dom.es.js",
@@ -13,6 +13,9 @@
     ".": {
       "import": "./dist/gui-dom.es.js",
       "require": "./dist/gui-dom.umd.js"
+    },
+    "./jsx": {
+      "types": "./jsx.d.ts"
     }
   },
   "license": "MIT",

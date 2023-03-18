@@ -1,4 +1,4 @@
-<img src='logo.png' />
+<img src='https://github.com/tori-getz/gui/blob/main/logo.png?raw=true' />
 
 # @gui/dom
 > <b>Gui</b> library for working with DOM

@@ -12,20 +12,6 @@ export default defineConfig({
       fileName: format => `${libraryName}.${format}.js`
     },
     emptyOutDir: false,
-    rollupOptions: {
-      input: './src/index.ts',
-      external: ['lodash'],
-      output: {
-        globals: {
-          'lodash': 'lodash'
-        }
-      }
-    },
-  },
-  esbuild: {
-    jsx: 'preserve',
-    jsxFactory: 'Gui.createElement',
-    jsxFragment: 'Gui.Fragment'
   },
   resolve: {
     alias: [
@@ -35,5 +21,9 @@ export default defineConfig({
       },
     ],
   },
-  plugins: [dts({ insertTypesEntry: true })]
+  plugins: [
+    dts({
+      outputDir: path.resolve(__dirname, 'dist')
+    })
+  ]
 });

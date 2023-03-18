@@ -16,10 +16,9 @@ export default defineConfig({
     },
     emptyOutDir: false,
     rollupOptions: {
-      external: ['lodash'],
+      external: ['@gui/core'],
       output: {
         globals: {
-          'lodash': 'lodash',
           '@gui/core': 'Gui'
         }
       }
@@ -38,7 +37,5 @@ export default defineConfig({
       }
     ],
   },
-  plugins: [
-    dts({ insertTypesEntry: true })
-  ]
+  plugins: [dts()]
 });

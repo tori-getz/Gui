@@ -1,17 +1,9 @@
-import { globalStateManager } from '@gui/core';
-import { start } from './component';
+import './index.css';
 
-const manager = globalStateManager();
-const { state } = manager;
+import * as GuiDOM from '@gui/dom';
+import { App } from './App';
 
-let iteration: number = 0;
-
-console.log(iteration, 'initial global state', state);
-iteration++;
-
-start();
-
-manager.subscribe(() => {
-  console.log(iteration, 'update global state', state);
-  iteration++; 
-});
+GuiDOM.render(
+  App,
+  document.querySelector('#app') as HTMLElement,
+);

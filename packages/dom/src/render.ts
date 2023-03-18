@@ -10,8 +10,13 @@ export const renderWithSubscribe = (
   Element: Component,
   container: HTMLElement
 ) => {
+  let oldTree = Element({}, null);
   render(Element({}, null) as IGuiNode, container);
   manager.subscribe(() => {
+    let nextTree = Element({}, null);
+    console.log('oldTree', oldTree);
+    console.log('nextTree', nextTree);
+
     container.removeChild(container.firstChild as Node);
     globalState.states.cursor = 0;
     globalState.effects.cursor = 0;

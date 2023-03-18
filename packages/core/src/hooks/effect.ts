@@ -3,13 +3,12 @@
 import { EffectDeps, EffectFn, mountEffect } from "~/effect";
 import { globalStateManager } from "..";
 
+export type EffectHook = (fn: EffectFn, deps?: EffectDeps) => void;
+
 const manager = globalStateManager();
 const { state: globalState } = manager;
 
-export const effect = (
-  fn: EffectFn,
-  deps?: EffectDeps,
-) => {
+export const effect: EffectHook = (fn, deps) => {
   if (!deps) {
     fn();
     return;

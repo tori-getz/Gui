@@ -1,0 +1,39 @@
+{
+  "name": "@gui/vite-plugin",
+  "version": "1.0.0",
+  "description": "Vite plugin for Gui",
+  "repository": "https://github.com/tori-getz/gui",
+  "author": "tori-getz",
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "npx nodemon",
+    "build": "unbuild",
+    "rm": "rimraf dist"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21",
+    "rimraf": "^4.4.0",
+    "unbuild": "^1.1.2",
+    "vite": "^4.1.4"
+  },
+  "peerDependencies": {
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "typescript-plugin-css-modules": "^4.2.3"
+  }
+}

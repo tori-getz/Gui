@@ -10,10 +10,14 @@
     "nx": "^15.8.6"
   },
   "scripts": {
-    "dev": "npx lerna run dev --parallel --stream --ignore @gui/example",
-    "build": "npx lerna run build --ignore @gui/example",
-    "clean": "npx lerna run rm && npx lerna clean --yes && rimraf node_modules",
-    "graph": "npx nx graph",
+    "bootstrap": "lerna bootstrap",
+    "dev": "lerna run dev --parallel --stream --ignore @gui/example",
+    "build": "lerna run build --ignore @gui/example",
+    "build:core": "yarn workspace @gui/core build",
+    "build:dom": "yarn workspace @gui/dom build",
+    "build:plugin": "yarn workspace @gui/vite-plugin build",
+    "clean": "lerna run rm && npx lerna clean --yes && rimraf node_modules",
+    "graph": "nx graph",
     "example": "yarn workspace @gui/example dev"
   }
 }

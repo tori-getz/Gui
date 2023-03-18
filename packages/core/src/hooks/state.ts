@@ -1,9 +1,9 @@
 import { globalStateManager } from '~/global-state';
 import { mountSetState, mountState, SetState } from '~/state';
 
-export const state = <T = unknown>(
-  initialValue: T
-): [ state: T, setState: SetState<T> ] => {
+export type StateHook = <T = unknown>(initialValue: T) => [ state: T, setState: SetState<T> ];
+
+export const state: StateHook = initialValue => {
   const manager = globalStateManager();
   const { state: globalState } = manager;
 

@@ -19,7 +19,8 @@
     "skipLibCheck": true,
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "plugins": [{ "name": "@gui/core/css" }]
   },
   "include": ["src"]
 }
