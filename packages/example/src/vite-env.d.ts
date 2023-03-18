@@ -1,2 +1,2 @@
-/// <reference types="@gui/core/jsx" />
+/// <reference types="@gui/dom/jsx" />
 /// <reference types="vite/client" />

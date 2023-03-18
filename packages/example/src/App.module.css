@@ -37,6 +37,7 @@
 
 .card {
   display: flex;
+  gap: 1em;
   flex-direction: column;
   justify-content: center;
 }
@@ -44,4 +45,9 @@
 .readTheDocs {
   color: #888;
 }
+
+.input {
+  padding: 0.6em 1.2em;
+}
+
 

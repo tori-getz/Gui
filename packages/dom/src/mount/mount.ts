@@ -3,7 +3,6 @@ import { patch } from "~/dom";
 import { MountFn } from "./types";
 
 const manager = globalStateManager();
-const { state: globalState } = manager;
 
 export const mount: MountFn = (
   element,
@@ -12,8 +11,7 @@ export const mount: MountFn = (
   let app = patch(element({}, null) as IGuiNode, container) as HTMLElement;
 
   manager.subscribe(() => {
-    globalState.states.cursor = 0;
-    globalState.effects.cursor = 0;
+    manager.clearCursors();
 
     app = patch(element({}, null) as IGuiNode, app) as HTMLElement;
   });

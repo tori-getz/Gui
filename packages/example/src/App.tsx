@@ -1,12 +1,32 @@
-import { Component, effect, state } from '@gui/core';
+import {
+  Component,
+  effect,
+  state,
+  ref
+} from '@gui/core';
 import styles from './App.module.css';
 import { Counter } from './Counter';
+import { ForwardInput } from './ForwardInput';
+import { helloRef } from './ref';
 
 export const App: Component = () => {
   const [ count, setCount ] = state<number>(0);
+  const [ name, setName ] = state<string>('');
+
+  const inputRef = ref<HTMLInputElement>();
 
   effect(() => {
-    console.log('count', count);
+    console.log('effect: running once');
+  }, []);
+
+  effect(() => {
+    console.log('effect: running permanently');
+    console.log(`hello ref: ${helloRef.current}`);
+    console.log('input ref', inputRef.current);
+  });
+
+  effect(() => {
+    console.log('effect: count', count);
   }, [count]);
 
   return (
@@ -20,12 +40,27 @@ export const App: Component = () => {
           <img className={styles.gui} width={150} height={150} src='/gui.png' alt='Vite logo' />
         </a>
       </div>
-      <h1>Vite + Gui</h1>
+      <h1>Vite + {name === '' ? 'Gui' : name}</h1>
       <div className={styles.card}>
         <Counter
           value={count}
-          onChange={() => setCount(prev => prev + 1)}
+          onChange={() => {
+            if (!helloRef.current) {
+              helloRef.current = 'hello';
+              alert('ref initialized')
+            }
+
+            setCount(prev => prev + 1)
+          }}
         />
+        <ForwardInput
+          ref={inputRef}
+          placeholder='Enter your name'
+          onChange={e => setName(e.target.value)}
+        />
+        <button onChange={e => console.log(e)}>
+          hello
+        </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

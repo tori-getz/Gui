@@ -13,6 +13,12 @@ declare global {
 export const globalStateManager = (): IGlobalStateManager => {
   const state = getGlobalState();
 
+  const clearCursors = (): void => {
+    state.states.cursor = 0;
+    state.effects.cursor = 0;
+    state.refs.cursor = 0;
+  }
+
   const subscribe = (subscriber: Subscriber): void => {
     state.subscribers.push(subscriber);
   }
@@ -25,6 +31,7 @@ export const globalStateManager = (): IGlobalStateManager => {
 
   return {
     state,
+    clearCursors,
     subscribe,
     notify,
   };
@@ -38,6 +45,10 @@ const getGlobalState = (): IGlobalState => {
         cursor: 0
       },
       effects: {
+        list: [],
+        cursor: 0,
+      },
+      refs: {
         list: [],
         cursor: 0,
       },

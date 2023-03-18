@@ -3,22 +3,31 @@ import type {
   StateHook,
   EffectHook,
   GuiElement,
-  IGuiNode
+  IGuiNode,
+  IRef
 } from '@gui/core';
 import { GuiEvent } from './dist';
 
 declare global {
   namespace JSX {
-    type Element = GuiElement<unknown>;
+    type Element = ReturnType<Component<any, any>>;
 
-    type ReservedProps = {
+    interface HandlersMap {
+      'onClick': PointerEvent;
+      'onChange': InputEvent;
+    }
+
+    type NativeElement<T extends HTMLElement, E extends Event> = {
+      [K in keyof HandlersMap]: (e: GuiEvent<T, HandlersMap[K]>) => unknown;
+    } & {
       className: string;
-      onClick: (event: GuiEvent) => unknown;
-      onChange: (event: GuiEvent) => unknown;
-    };
+      ref: IRef<T>;
+    } & T;
 
     type NativeElements = {
-      [K in keyof HTMLElementTagNameMap]: Partial<HTMLElementTagNameMap[K] & ReservedProps>;
+      [K in keyof HTMLElementTagNameMap]: Partial<
+        NativeElement<HTMLElementTagNameMap[K], Event>
+      >;
     };
 
     interface IntrinsicElements extends NativeElements {}
@@ -30,6 +39,6 @@ declare global {
     export const state: StateHook;
     export const effect: EffectHook;
     
-    export type Component<PropsType = {}, ChildrenType = unknown> = (props: PropsType, children: ChildrenType) => GuiElement<PropsType>;
+    export type Component<T = {}, ChildrenType = any> = (props: T, children?: ChildrenType) => GuiElement<T>;
   }
 }

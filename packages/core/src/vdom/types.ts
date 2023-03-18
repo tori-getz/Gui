@@ -1,4 +1,4 @@
-export type Component<T = unknown, ChildrenType = any> = (props?: T, children?: ChildrenType) => GuiElement<T>;
+export type Component<T = {}, ChildrenType = any> = (props: T, children?: ChildrenType) => GuiElement<T>;
 
 export type GuiElement<T = unknown> = IGuiNode<T> | string | number | null;
 

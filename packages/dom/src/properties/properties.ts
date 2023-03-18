@@ -1,3 +1,4 @@
+import { IRef } from "@gui/core";
 import { IPatchedNode } from "~/dom";
 import { attachEvent } from "~/events";
 import type { SetProperty } from "./types";
@@ -8,6 +9,16 @@ export const setProperty: SetProperty = (
   prevValue,
   nextValue
 ) => {
+  if (key === 'ref') {
+    const nextRef = nextValue as IRef<typeof node>;
+    
+    if (nextRef.current === null) {
+      nextRef.current = node;
+    }
+
+    return;
+  }
+
   if (key === 'className') {
     if (prevValue !== nextValue) {
       node.classList.add(nextValue as string);
