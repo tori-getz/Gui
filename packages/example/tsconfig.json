@@ -22,5 +22,5 @@
     },
     "plugins": [{ "name": "@gui/core/css" }]
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }

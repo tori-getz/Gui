@@ -1,3 +1,4 @@
+import { GuiElement } from './dist';
 import type {
   Component,
   StateHook,
@@ -5,8 +6,8 @@ import type {
 } from './dist/src/index';
 
 declare global {
-  declare namespace JSX {
-    type Element = ReturnType<Component>;
+  export declare namespace JSX {
+    type Element = Component<any, unknown>;
 
     type ReservedProps = {
       className: string;

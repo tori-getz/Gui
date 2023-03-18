@@ -1,9 +1,13 @@
-import { Component, state } from '@gui/core';
+import { Component, effect, state } from '@gui/core';
 import styles from './App.module.css';
 import { Counter } from './Counter';
 
 export const App: Component = () => {
   const [ count, setCount ] = state<number>(0);
+
+  effect(() => {
+    console.log('count', count);
+  }, [count]);
 
   return (
     <div className={styles.app}>
