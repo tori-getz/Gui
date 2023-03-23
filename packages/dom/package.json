@@ -40,5 +40,6 @@
   "peerDependencies": {
     "@gui-framework/core": "^1.0.0",
     "lodash": "^4.17.21"
-  }
+  },
+  "gitHead": "0e07ef4b67a5ebe4ceaebe0b1fca61bcf1b00a60"
 }
