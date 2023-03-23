@@ -1,6 +1,6 @@
 {
   "name": "@gui-framework/vite-plugin",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Vite plugin for Gui",
   "repository": "https://github.com/tori-getz/gui",
   "author": "tori-getz",
