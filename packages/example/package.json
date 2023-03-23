@@ -2,7 +2,7 @@
   "name": "@gui/example",
   "description": "Gui example",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,13 +11,13 @@
     "rm": "rimraf dist"
   },
   "devDependencies": {
-    "@gui-framework/vite-plugin": "^1.0.0",
+    "@gui-framework/vite-plugin": "^1.0.2",
     "rimraf": "^4.4.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   },
   "dependencies": {
-    "@gui-framework/core": "^1.0.0",
-    "@gui-framework/dom": "^1.0.0"
+    "@gui-framework/core": "^1.0.2",
+    "@gui-framework/dom": "^1.0.2"
   }
 }
