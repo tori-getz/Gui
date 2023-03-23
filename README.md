@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-yarn add @gui/core @gui/dom
+yarn add @gui-framework/core @gui-framework/dom @gui-framework/vite-plugin
 ```
 
 ## Usage
@@ -29,6 +29,17 @@ GuiDOM.render(
   document.querySelector('#root'),
 );
 
+```
+
+Add to <b>vite.config.ts</b>
+```ts
+import { gui } from '@gui-framework/vite-plugin';
+
+{
+  // ...
+  plugins: [gui()]
+  // ...
+}
 ```
 
 ## Author
