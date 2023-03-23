@@ -14,10 +14,10 @@
     "rimraf": "^4.4.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
-    "@gui/vite-plugin": "*"
+    "@gui-framework/vite-plugin": "*"
   },
   "dependencies": {
-    "@gui/core": "*",
-    "@gui/dom": "*"
+    "@gui-framework/core": "*",
+    "@gui-framework/dom": "*"
   }
 }

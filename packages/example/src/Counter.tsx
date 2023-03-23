@@ -1,4 +1,3 @@
-
 interface ICounter {
   value: number;
   onChange: () => unknown;

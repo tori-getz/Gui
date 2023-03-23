@@ -1,4 +1,4 @@
-import type { Component } from "@gui/core";
+import type { Component } from "@gui-framework/core";
 
 export type MountFn = (
   element: Component,

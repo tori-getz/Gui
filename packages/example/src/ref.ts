@@ -1,3 +1,3 @@
-import { makeRef } from '@gui/core';
+import { makeRef } from '@gui-framework/core';
 
-export const helloRef = makeRef<string>();
+export const helloRef = makeRef<string>('null');

@@ -1,5 +1,5 @@
 {
-  "name": "@gui/dom",
+  "name": "@gui-framework/dom",
   "version": "1.0.0",
   "description": "Gui library for working with DOM",
   "files": [
@@ -33,11 +33,12 @@
     "vite-plugin-dts": "^2.1.0"
   },
   "dependencies": {
-    "@gui/core": "*",
-    "lodash": "^4.17.21"
+    "@gui-framework/core": "*",
+    "lodash": "^4.17.21",
+    "shallow-equal": "^3.1.0"
   },
   "peerDependencies": {
-    "@gui/core": "^1.0.0",
+    "@gui-framework/core": "^1.0.0",
     "lodash": "^4.17.21"
   }
 }

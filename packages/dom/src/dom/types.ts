@@ -1,4 +1,4 @@
-import { GuiElement, IGuiNode } from "@gui/core";
+import { GuiElement, IGuiNode } from "@gui-framework/core";
 
 export type CreateDOMNode = (node: GuiElement) => PatchedNode | void; 
 

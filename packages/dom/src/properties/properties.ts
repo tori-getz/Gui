@@ -1,4 +1,4 @@
-import { IRef } from "@gui/core";
+import { IRef } from "@gui-framework/core";
 import { IPatchedNode } from "~/dom";
 import { attachEvent } from "~/events";
 import type { SetProperty } from "./types";

@@ -16,7 +16,7 @@ export const plugin = ({
       }
 
       if (injectGui) {
-        (config.esbuild as ESBuildOptions).jsxInject = `import * as Gui from '@gui/core'\n`;
+        (config.esbuild as ESBuildOptions).jsxInject = `import * as Gui from '@gui-framework/core'\n`;
       }
 
       return config;

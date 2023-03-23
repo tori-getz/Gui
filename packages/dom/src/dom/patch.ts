@@ -1,4 +1,4 @@
-import { createElement, IGuiNode } from "@gui/core";
+import { createElement, IGuiNode } from "@gui-framework/core";
 import { setProperty } from "~/properties";
 import { createDOMNode } from "./dom";
 

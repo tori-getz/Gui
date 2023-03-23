@@ -1,5 +1,5 @@
-import { forwardRef } from "@gui/core";
-import { GuiEvent } from "@gui/dom";
+import { forwardRef } from "@gui-framework/core";
+import { GuiEvent } from "@gui-framework/dom";
 
 interface IForwardInput {
   placeholder: string;

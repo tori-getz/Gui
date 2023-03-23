@@ -1,4 +1,4 @@
-import { globalStateManager, IGuiNode } from "@gui/core";
+import { globalStateManager, IGuiNode } from "@gui-framework/core";
 import { patch } from "~/dom";
 import { MountFn } from "./types";
 

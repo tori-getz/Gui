@@ -2,7 +2,7 @@ import type { IRef } from './types';
 import { globalStateManager } from '~/global-state';
 
 export const makeRef = <T = unknown>(
-  initialValue: T | null = null
+  initialValue: T
 ): IRef<T> => {
   const ref: IRef<T> = {
     current: null,

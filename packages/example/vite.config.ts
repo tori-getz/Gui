@@ -13,11 +13,11 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ["@gui/core", "@gui/dom"],
+      external: ["@gui-framework/core", "@gui-framework/dom"],
       output: {
         globals: {
-          "@gui/core": "Gui",
-          "@gui/dom": "GuiDOM",
+          "@gui-framework/core": "Gui",
+          "@gui-framework/dom": "GuiDOM",
         },
       },
     },

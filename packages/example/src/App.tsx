@@ -2,8 +2,9 @@ import {
   Component,
   effect,
   state,
-  ref
-} from '@gui/core';
+  ref,
+  memo
+} from '@gui-framework/core';
 import styles from './App.module.css';
 import { Counter } from './Counter';
 import { ForwardInput } from './ForwardInput';
@@ -14,6 +15,14 @@ export const App: Component = () => {
   const [ name, setName ] = state<string>('');
 
   const inputRef = ref<HTMLInputElement>();
+
+  const memoCount = memo<number>(() => {
+    return count;
+  }, [count]);
+
+  effect(() => {
+    console.log('memo count', memoCount);
+  }, [memoCount])
 
   effect(() => {
     console.log('effect: running once');
@@ -50,7 +59,7 @@ export const App: Component = () => {
               alert('ref initialized')
             }
 
-            setCount(prev => prev + 1)
+            setCount(5);
           }}
         />
         <ForwardInput
