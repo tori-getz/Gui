@@ -1,6 +1,6 @@
 {
   "name": "@gui-framework/dom",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gui library for working with DOM",
   "files": [
     "dist",
@@ -33,7 +33,7 @@
     "vite-plugin-dts": "^2.1.0"
   },
   "dependencies": {
-    "@gui-framework/core": "^1.0.2",
+    "@gui-framework/core": "^1.0.3",
     "lodash": "^4.17.21",
     "shallow-equal": "^3.1.0"
   },
