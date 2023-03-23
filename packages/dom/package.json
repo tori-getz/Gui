@@ -6,6 +6,7 @@
     "dist",
     "jsx.d.ts"
   ],
+  "repository": "https://github.com/tori-getz/gui.git",
   "main": "./dist/gui-dom.umd.js",
   "module": "./dist/gui-dom.es.js",
   "types": "./dist/index.d.ts",

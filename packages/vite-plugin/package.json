@@ -1,6 +1,6 @@
 {
   "name": "@gui-framework/vite-plugin",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "description": "Vite plugin for Gui",
   "repository": "https://github.com/tori-getz/gui",
   "author": "tori-getz",
@@ -22,7 +22,8 @@
   "scripts": {
     "dev": "npx nodemon",
     "build": "unbuild",
-    "rm": "rimraf dist"
+    "rm": "rimraf dist",
+    "publish-npm": "npm publish --access public"
   },
   "devDependencies": {
     "nodemon": "^2.0.21",
