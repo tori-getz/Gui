@@ -16,7 +16,7 @@
     "build:core": "yarn workspace @gui-framework/core build",
     "build:dom": "yarn workspace @gui-framework/dom build",
     "build:plugin": "yarn workspace @gui-framework/vite-plugin build",
-    "publish": "npx lerna publish --ignore @gui-framework/example",
+    "publish:npm": "npx lerna publish --no-private --skip-npm && npx lerna run publish-npm",
     "clean": "lerna run rm && npx lerna clean --yes && rimraf node_modules",
     "graph": "nx graph",
     "example": "yarn workspace @gui-framework/example dev"

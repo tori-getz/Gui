@@ -22,7 +22,8 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",
-    "rm": "rimraf dist"
+    "rm": "rimraf dist",
+    "publish-npm": "npm publish --access public"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.191",
@@ -41,5 +42,5 @@
     "@gui-framework/core": "^1.0.0",
     "lodash": "^4.17.21"
   },
-  "gitHead": "554ec9ca3bbdb1a3330839ee93e67adab0beea0d"
+  "gitHead": "72f649f35ee26511326eb7d04f224fffdf97d5ac"
 }
